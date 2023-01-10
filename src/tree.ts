@@ -31,8 +31,8 @@ class BinaryTree<T> {
   postOrderTraversal() {}
 }
 
-function main() {
+function mainTree() {
   const tree = new BinaryTree(new BinaryNode(5));
 }
 
-main();
+mainTree();

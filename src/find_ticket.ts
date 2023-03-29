@@ -30,6 +30,43 @@
  * Entry 3:
  * N=1 Regular Ticket Holder enters the show. 9 left. The holder is position 3 in the queue and based on mapping table the value is 2.
  * Returns 2
+ * 
+ * 
+ * 
+ * 
+
+ * 
+ * 
+ * E.g.:
+ * x=5, y=5, z=5, n=3, q=7 -> ans: 2
+ * 
+  [
+ *  0, 0, 0, 
+ *  1, 1, 1,
+ *  2, 2, 2,
+ *  0, 0, 1, 
+ *  1, 2, 2,  
+ * ]
+ *
+ * Explanation:
+ *
+ * Entry 1:
+ * 3 Express Unlimited Ticket Holder enter the show. 2 Left
+ *
+ * Entry 2:
+ * 3 Express Ticket Holder enters the show. 2 left
+ *
+ * Entry 3:
+ * N=1 Regular Ticket Holder enters the show. 9 left. The holder is position 3 in the queue and based on mapping table the value is 2.
+ * Returns 2
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 function findTicket2(x: number, y: number, z: number, n: number, q: number) {
   const arr = [x, y, z];
@@ -63,6 +100,21 @@ function findTicket2(x: number, y: number, z: number, n: number, q: number) {
   return queue[q - 1];
 }
 
-console.log(findTicket2(5, 5, 5, 1, 5));
-console.log(findTicket2(5, 5, 5, 2, 5));
-console.log(findTicket2(5, 5, 5, 5, 5));
+function processData(input: number) {
+  function innerProcessData(floor: number, counter: number): number {
+    console.log({ floor, counter });
+    if (counter === input) return floor;
+    floor += 1;
+    if (String(floor).indexOf("4") < 0 && String(floor).indexOf("13") < 0) {
+      counter += 1;
+    }
+    return innerProcessData(floor, counter);
+  }
+
+  return innerProcessData(1, 1);
+}
+
+// console.log(findTicket2(5, 5, 5, 1, 5));
+// console.log(findTicket2(5, 5, 5, 2, 5));
+// console.log(findTicket2(5, 5, 5, 5, 5));
+console.log(processData(12));
